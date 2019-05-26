@@ -39,9 +39,14 @@ import SGPlayer
 var videoPlayer:SGPlayer!
 
 override func viewDidLoad() {
+  ...
+
+
   videoPlayer = SGPlayer()
-  
+
   //add player view
+  videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+
   videoView.addSubview(videoPlayer.view)
         videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
         var constraint = NSLayoutConstraint(item: videoPlayer.view, attribute: .top, relatedBy: .equal, toItem: videoView,  attribute: .top, multiplier: 1.0, constant: 0.0)
@@ -64,3 +69,6 @@ override func viewDidLoad() {
   videoPlayer.play()
 }
 ```
+
+## Changes:
+Progress update frequency is set to 0.1 seconds (100 milliseconds)
