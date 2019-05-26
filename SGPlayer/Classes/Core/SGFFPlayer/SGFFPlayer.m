@@ -13,6 +13,8 @@
 #import "SGPlayerMacro.h"
 #import "SGPlayer+DisplayView.h"
 
+const double PROGRESS_UPDATE_FREQUENCY = 0.1;//time interval
+
 @interface SGFFPlayer () <SGFFDecoderDelegate, SGFFDecoderVideoOutputConfig, SGFFDecoderAudioOutputConfig, SGAudioManagerDelegate>
 
 @property (nonatomic, strong) NSLock * stateLock;
@@ -171,7 +173,7 @@
             [SGPlayerNotification postPlayer:self.abstractPlayer progressPercent:@(percent) current:@(_progress) total:@(duration)];
         } else {
             NSTimeInterval currentTime = [NSDate date].timeIntervalSince1970;
-            if (currentTime - self.lastPostProgressTime >= 1) {
+            if (currentTime - self.lastPostProgressTime >= PROGRESS_UPDATE_FREQUENCY) {
                 self.lastPostProgressTime = currentTime;
                 /*
                 if (!self.decoder.seekEnable && duration <= 0) {
