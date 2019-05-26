@@ -45,9 +45,9 @@ override func viewDidLoad() {
   videoPlayer = SGPlayer()
 
   //add player view
-  videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-
   videoView.addSubview(videoPlayer.view)
+  videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+    
   videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
   var constraint = NSLayoutConstraint(item: videoPlayer.view, attribute: .top, relatedBy: .equal, toItem: videoView,  attribute: .top, multiplier: 1.0, constant: 0.0)
   videoView.addConstraint(constraint)
@@ -57,6 +57,7 @@ override func viewDidLoad() {
         
   constraint = NSLayoutConstraint(item: videoPlayer.view, attribute: .right, relatedBy: .equal, toItem: videoView, attribute: .right, multiplier: 1.0, constant: 0.0)
   videoView.addConstraint(constraint)
+  
   constraint = NSLayoutConstraint(item: videoPlayer.view, attribute: .bottom, relatedBy: .equal, toItem: videoView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
   videoView.addConstraint(constraint)
   
